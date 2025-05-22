@@ -1,3 +1,15 @@
+
+function getColor() {
+    let rColor = Math.random();
+    let gColor = Math.random();
+    let bColor = Math.random();
+    r = Math.floor(rColor * 255) + 1;
+    g = Math.floor(gColor * 255) + 1;
+    b = Math.floor(bColor * 255) + 1;
+    return `${r},${g},${b}`;
+};
+
+
 for (let a = 0; a < 16; a++) {
     const lineContainer = document.createElement("div");
     lineContainer.classList.add("lineContainer");
@@ -16,12 +28,21 @@ for (let a = 0; a < 16; a++) {
 
 const squares = document.querySelectorAll(".square");
 
+
+
 squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-        square.style.cssText = "border: solid black; background: black";
-        square.style.flexGrow = 1;
-    });
+    for (let i = 0; i < 10; i++) {
+        let opc = 0.1;
+        square.addEventListener("mouseover", () => {
+            color = getColor();
+            square.style.cssText = `border: solid black; background: rgb(${getColor()}, ${opc})`;
+            square.style.flexGrow = 1;
+            opc += 0.1;    
+        });
+    };
+    
 });
+
 
 let gridNum;
 const button = document.querySelector("button");
@@ -50,30 +71,22 @@ button.addEventListener("click", () => {
     const squares = document.querySelectorAll(".square");
 
     squares.forEach((square) => {
-        square.addEventListener("mouseover", () => {
-            square.style.cssText = "border: solid black; background: black; flexGrow: 1";
-            console.log(square);
-        });
-        // square.addEventListener("mouseout", () => {
-        //     square.style.cssText = "border: solid black; background: black";
-        // });
+        for (let i = 0; i < 10; i++) {
+            let opc = 0.1;
+            square.addEventListener("mouseover", () => {
+                color = getColor();
+                square.style.cssText = `border: solid black; background: rgb(${getColor()}, ${opc})`;
+                square.style.flexGrow = 1;
+                opc += 0.1;    
+            });
+        };
+        
     });
 });
 
-console.log(gridNum);
 
 
  
-// const squares = document.querySelectorAll(".square");
-
-// squares.forEach((square) => {
-//     square.addEventListener("click", () => {
-//         square.style.cssText = "border: solid black; padding: 20px; background: black";
-//         });
-//     square.addEventListener("mouseout", () => {
-//         square.style.cssText = "border: solid black; padding: 20px; background: black";
-//         });
-// })
 
 
 
